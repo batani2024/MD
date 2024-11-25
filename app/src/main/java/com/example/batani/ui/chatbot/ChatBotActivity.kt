@@ -23,12 +23,10 @@ class ChatBotActivity : AppCompatActivity() {
         binding = ActivityChatBotBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Setup RecyclerView
         chatAdapter = ChatAdapter(messages)
         binding.chatRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.chatRecyclerView.adapter = chatAdapter
 
-        // Handle send button click
         binding.sendButton.setOnClickListener {
             val userMessage = binding.inputMessage.text.toString()
             if (userMessage.isNotBlank()) {
@@ -47,7 +45,7 @@ class ChatBotActivity : AppCompatActivity() {
     }
 
     private fun modelCall(prompt: String) {
-        // Show the ProgressBar while the response is loading
+      
         binding.loadingProgressBar.visibility = View.VISIBLE
 
         val generativeModel = GenerativeModel(
@@ -59,7 +57,7 @@ class ChatBotActivity : AppCompatActivity() {
             try {
                 val response = generativeModel.generateContent(prompt)
 
-                // Switch to the main thread to update UI
+      
                 withContext(Dispatchers.Main) {
                     // Hide the ProgressBar after response is received
                     binding.loadingProgressBar.visibility = View.GONE
@@ -67,7 +65,7 @@ class ChatBotActivity : AppCompatActivity() {
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    // Hide the ProgressBar in case of an error
+   
                     binding.loadingProgressBar.visibility = View.GONE
                     addMessage("Error: ${e.message}", false)
                 }
