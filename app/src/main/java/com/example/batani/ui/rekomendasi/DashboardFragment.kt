@@ -33,10 +33,8 @@ class DashboardFragment : Fragment() {
 
         binding.rvQuote.layoutManager = LinearLayoutManager(requireContext())
 
-        // Memanggil fungsi untuk mendapatkan data
         getData()
 
-        // Menambahkan callback untuk tombol back
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             showExitConfirmationDialog()
         }
@@ -54,7 +52,7 @@ class DashboardFragment : Fragment() {
     }
 
     private fun showExitConfirmationDialog() {
-        // Membuat AlertDialog untuk konfirmasi keluar
+ 
         val builder = AlertDialog.Builder(requireContext())
         builder.setMessage("Apakah Anda yakin ingin keluar?")
             .setCancelable(false) // Dialog tidak bisa dibatalkan dengan menekan luar dialog
@@ -66,7 +64,7 @@ class DashboardFragment : Fragment() {
                 dialog.dismiss() // Menutup dialog jika tekan "Tidak"
             }
 
-        // Menampilkan dialog
+      
         val alert = builder.create()
         alert.show()
     }
