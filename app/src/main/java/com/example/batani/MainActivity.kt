@@ -39,18 +39,17 @@ class MainActivity : AppCompatActivity() {
 
         navView.setupWithNavController(navController)
 
-        // Tombol draggable
         val draggableIcon = binding.root.findViewById<View>(R.id.draggableIcon)
 
         draggableIcon.setOnTouchListener { view, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    // Simpan posisi awal
+                  
                     startX = event.rawX
                     startY = event.rawY
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    // Geser tombol
+            
                     view.animate()
                         .x(event.rawX - (view.width / 2))
                         .y(event.rawY - (view.height / 2))
@@ -58,11 +57,11 @@ class MainActivity : AppCompatActivity() {
                         .start()
                 }
                 MotionEvent.ACTION_UP -> {
-                    // Hitung jarak perpindahan
+         
                     val deltaX = abs(event.rawX - startX)
                     val deltaY = abs(event.rawY - startY)
 
-                    // Jika pergerakan kecil, anggap sebagai klik
+          
                     if (deltaX < cLICKTHRESHOLD && deltaY <cLICKTHRESHOLD) {
                         view.performClick()
                     }
@@ -71,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        // Klik untuk membuka activity lain
+ 
         draggableIcon.setOnClickListener {
             val intent = Intent(this, ChatBotActivity::class.java)
             startActivity(intent)
