@@ -24,23 +24,23 @@ class RainEffectView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         canvas.let { super.onDraw(it) }
 
-        // Gambar setiap tetesan hujan
+    
         for (drop in drops) {
             canvas.drawLine(drop.x, drop.y, drop.x, drop.y + drop.length, rainPaint)
             drop.y += drop.speed
 
-            // Reset tetesan hujan jika melewati batas layar
+
             if (drop.y > height) {
                 drop.y = -drop.length
             }
         }
 
-        // Mengulang animasi
+
         invalidate()
     }
 
     private fun generateRainDrops() {
-        // Buat tetesan hujan secara acak
+
         for (i in 0..100) {
             drops.add(
                 RainDrop(
