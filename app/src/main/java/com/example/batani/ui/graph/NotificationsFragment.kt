@@ -27,7 +27,7 @@ class NotificationsFragment : Fragment() {
 
     private lateinit var lineChart: LineChart
 
-    // Data untuk setiap garis (misalnya, data untuk 5 garis)
+
     private val monthData = arrayOf(
         floatArrayOf(150f, 55f, 120f, 130f, 80f, 90f, 100f, 10f, 120f, 30f, 140f, 150f), // Garis 1
         floatArrayOf(70f, 65f, 55f, 85f, 95f, 100f, 110f, 120f, 130f, 140f, 150f, 160f), // Garis 2
@@ -47,14 +47,13 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // Menginisialisasi LineChart
         lineChart = binding.lineChart
 
-        // Bulan sebagai label untuk X-Axis
+
         val months = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
         val dataSets = ArrayList<LineDataSet>()
 
-        // Membuat 5 garis data berdasarkan monthData
+    
         for (i in monthData.indices) {
             val values = ArrayList<Entry>()
             for (j in months.indices) {
@@ -64,27 +63,23 @@ class NotificationsFragment : Fragment() {
 
             val dataSet = LineDataSet(values, "Garis ${i + 1}")
 
-            // Menghasilkan warna acak untuk setiap garis
             val randomColor = generateRandomColor()
             dataSet.setColor(randomColor) // Menggunakan warna acak
             dataSet.setValueTextColor(Color.BLACK) // Ubah warna teks
 
-            // Mengatur ketebalan garis
+  
             dataSet.lineWidth = 2f  // Ubah  sesuai ketebalan di inginkan
             dataSets.add(dataSet)
         }
 
-        // Menambahkan data ke LineChart
         val lineData = LineData(dataSets as List<ILineDataSet>?)
         lineChart.data = lineData
 
-        // Menambahkan pengaturan untuk X dan Y Axis
         val xAxis = lineChart.xAxis
         xAxis.valueFormatter = IndexAxisValueFormatter(months) // Menggunakan bulan sebagai label X
         xAxis.granularity = 1f // Menentukan interval antar titik
         xAxis.setLabelCount(months.size, true)  // Menampilkan semua bulan
 
-        // Menambahkan pengaturan untuk Y axis (harga)
         val yAxis = lineChart.axisLeft
         yAxis.setDrawGridLines(true)
         yAxis.setAxisMinimum(0f) // Menetapkan harga minimum 0
@@ -98,7 +93,6 @@ class NotificationsFragment : Fragment() {
         }
         lineChart.axisRight.isEnabled = false // Menonaktifkan sumbu Y sebelah kanan
 
-        // Memperbarui grafik
         lineChart.invalidate()
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
@@ -120,12 +114,11 @@ class NotificationsFragment : Fragment() {
             .setPositiveButton("Ya") { _, _ -> requireActivity().finish() }
             .setNegativeButton("Tidak") { dialog, _ -> dialog.dismiss() }
 
-        // Menampilkan dialog
         val alert = builder.create()
         alert.show()
     }
 
-    // Fungsi untuk menghasilkan warna acak
+
     private fun generateRandomColor(): Int {
         val random = Random()
         val r = random.nextInt(256) // Red
