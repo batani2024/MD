@@ -26,7 +26,7 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Mengambil instance ViewModel yang sudah didefinisikan dengan benar
+     
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
