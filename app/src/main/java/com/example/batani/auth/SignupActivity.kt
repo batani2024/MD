@@ -62,7 +62,7 @@ class SignupActivity : AppCompatActivity() {
             if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
                 registerUser(name, email, password)
             } else {
-//                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+
                 MotionToast.darkToast(this@SignupActivity,
                     "Warning !!",
                     "Please fill all fields",
@@ -130,7 +130,7 @@ class SignupActivity : AppCompatActivity() {
 
                     if (response.error) {
 
-//                        Toast.makeText(this@SignupActivity, "Registration Failed: ${response.message}", Toast.LENGTH_SHORT).show()
+
                         MotionToast.darkToast(this@SignupActivity,
                             "Register Failed !!",
                             response.message,
@@ -166,7 +166,7 @@ class SignupActivity : AppCompatActivity() {
                     if (errorBody != null) {
 
                         val errorResponse = Gson().fromJson(errorBody, RegisterResponse::class.java)
-//                        Toast.makeText(this@SignupActivity, "Error: ${errorResponse.message}", Toast.LENGTH_SHORT).show()
+
                         MotionToast.darkToast(this@SignupActivity,
                             "Error !!",
                             errorResponse.message,
@@ -179,7 +179,7 @@ class SignupActivity : AppCompatActivity() {
 
                     } else {
 
-//                        Toast.makeText(this@SignupActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+
                         MotionToast.darkToast(this@SignupActivity,
                             "Error !!",
                             e.message.toString(),
