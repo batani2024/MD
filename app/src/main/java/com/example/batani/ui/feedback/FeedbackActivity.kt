@@ -13,11 +13,10 @@ class FeedbackActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Menghubungkan layout dengan ViewBinding
+     
         binding = ActivityFeedbackBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Mengakses elemen UI melalui binding
         binding.sendFeedbackButton.setOnClickListener {
             val feedback = binding.feedbackEditText.text.toString().trim()
             if (feedback.isNotEmpty()) {
