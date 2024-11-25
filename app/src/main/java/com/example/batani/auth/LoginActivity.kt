@@ -66,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
             if (password.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
                 loginUser(email, password)
             } else {
-//                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+
                 MotionToast.darkToast(this@LoginActivity,
                     "Warning !!",
                     "Please fill all fields",
@@ -182,7 +182,7 @@ class LoginActivity : AppCompatActivity() {
                     val errorBody = e.response()?.errorBody()?.string()
                     if (errorBody != null) {
                         val errorResponse = Gson().fromJson(errorBody, RegisterResponse::class.java)
-//                        Toast.makeText(this@LoginActivity, "Error: ${errorResponse.message}", Toast.LENGTH_SHORT).show()
+
                         MotionToast.darkToast(this@LoginActivity,
                             "Error !!",
                             errorResponse.message,
@@ -192,7 +192,7 @@ class LoginActivity : AppCompatActivity() {
                             ResourcesCompat.getFont(this@LoginActivity, R.font.poppins_medium))
 
                     } else {
-//                        Toast.makeText(this@LoginActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+)
                         MotionToast.darkToast(this@LoginActivity,
                             "Error !!",
                             "${e.message}",
