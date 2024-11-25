@@ -35,14 +35,14 @@ class QuoteRepository(private val apiService: ApiService, private val userPrefer
 
     suspend fun logout(): Boolean {
         return try {
-            // Menjalankan proses logout dan menghapus sesi
+           
             userPreference.logout()
-            // Mengembalikan true jika logout berhasil
+         
             true
         } catch (e: Exception) {
-            // Log error jika terjadi kesalahan
+       
             Log.e("QuoteRepository", "Logout failed", e)
-            // Mengembalikan false jika terjadi kesalahan
+           
             false
         }
     }
