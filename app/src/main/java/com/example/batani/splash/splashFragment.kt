@@ -22,22 +22,21 @@ class SplashFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
+       
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
 
     override fun onResume() {
         super.onResume()
 
-        // Sembunyikan BottomNavigationView saat SplashFragment aktif
         setBottomNavigationVisibility(View.GONE)
         setDraggableButtonVisibility(View.GONE)
-        // Gunakan coroutine untuk penundaan sebelum navigasi
+    
         navigateAfterDelay()
     }
 
     private fun setDraggableButtonVisibility(visibility: Int) {
-        // Cari tombol draggable berdasarkan ID
+       
         val draggableButton = requireActivity().findViewById<View>(R.id.draggableIcon)
         draggableButton?.visibility = visibility
     }
@@ -68,7 +67,7 @@ class SplashFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        // Pastikan BottomNavigationView ditampilkan kembali setelah SplashFragment dihancurkan
+        
         setBottomNavigationVisibility(View.VISIBLE)
         setDraggableButtonVisibility(View.VISIBLE)
     }
