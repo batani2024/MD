@@ -29,12 +29,12 @@ class SettingsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout and initialize ViewBinding
+
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
 
 
         binding.buttonFeedback.setOnClickListener {
-            // Start FeedbackActivity when the button is clicked
+   
             val intent = Intent(requireContext(), FeedbackActivity::class.java)
             startActivity(intent)
         }
@@ -50,16 +50,16 @@ class SettingsFragment : Fragment() {
 
     private fun logout() {
         lifecycleScope.launch {
-            // Proses logout melalui ViewModel
+
             val result = viewModel.logout() // Pastikan viewModel.logout mengembalikan status atau hasil
 
             if (result) {
-                // Jika logout berhasil, lakukan navigasi ke activity lain (misalnya LoginActivity)
+   
                 val intent = Intent(requireActivity(), LoginActivity::class.java)
                 startActivity(intent)
                 requireActivity().finish() // Menutup activity ini agar tidak bisa kembali ke halaman sebelumnya
             } else {
-                // Jika logout gagal, beri feedback kepada pengguna
+
                 Toast.makeText(requireContext(), "Logout failed", Toast.LENGTH_SHORT).show()
             }
         }
@@ -75,13 +75,13 @@ class SettingsFragment : Fragment() {
                 dialog.dismiss()
             }
 
-        // Menampilkan dialog
+
         val alert = builder.create()
         alert.show()
     }
     override fun onDestroyView() {
         super.onDestroyView()
-        // Menetapkan _binding ke null untuk menghindari memory leaks
+        
         _binding = null
     }
 }
