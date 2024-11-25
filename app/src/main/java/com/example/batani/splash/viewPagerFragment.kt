@@ -19,14 +19,12 @@ class ViewPagerFragment : Fragment() {
     ): View? {
         _binding = FragmentViewPagerBinding.inflate(inflater, container, false)
 
-        // Daftar fragment onboarding
         val fragmentList = arrayListOf(
             FirstScreen(),
             SecondScreen(),
             ThirdScreen()
         )
 
-        // Adapter untuk ViewPager
         val adapter = ViewPagerAdapter(
             fragmentList,
             requireActivity().supportFragmentManager,
@@ -40,13 +38,13 @@ class ViewPagerFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        // Sembunyikan BottomNavigationView saat fragment aktif
+     
         requireActivity().findViewById<View>(R.id.nav_view)?.visibility = View.GONE
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        // Tampilkan kembali BottomNavigationView ketika fragment dihancurkan
+
         requireActivity().findViewById<View>(R.id.nav_view)?.visibility = View.VISIBLE
         _binding = null
     }
